@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Marks Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #6dd5fa, #2980b9);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      width: 350px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #2980b9;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background: #2980b9;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #1f6391;
+    }
+    .result {
+      margin-top: 20px;
+      text-align: left;
+      font-size: 16px;
+    }
+    .grade {
+      font-weight: bold;
+      font-size: 18px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>📘 Student Marks Calculator</h2>
+    <input type="text" id="marksInput" placeholder="Enter marks (e.g. 85, 90, 76)">
+    <button onclick="calculate()">Calculate</button>
+    <div class="result" id="output"></div>
+  </div>
+
+  <script>
+    function calculate() {
+      let input = document.getElementById("marksInput").value.trim();
+      if (!input) {
+        alert("Please enter marks!");
+        return;
+      }
+
+      let marks = input.split(",").map(num => parseFloat(num.trim())).filter(n => !isNaN(n));
+
+      if (marks.length === 0) {
+        alert("Invalid input! Enter numbers separated by commas.");
+        return;
+      }
+
+      let total = marks.reduce((sum, m) => sum + m, 0);
+      let average = total / marks.length;
+      let percentage = (total / (marks.length * 100)) * 100;
+
+      // Grade system
+      let grade = "";
+      if (percentage >= 90) grade = "A+";
+      else if (percentage >= 80) grade = "A";
+      else if (percentage >= 70) grade = "B";
+      else if (percentage >= 60) grade = "C";
+      else if (percentage >= 50) grade = "D";
+      else grade = "Fail";
+
+      document.getElementById("output").innerHTML = `
+        <p><b>Marks:</b> ${marks.join(", ")}</p>
+        <p><b>Total Marks:</b> ${total}</p>
+        <p><b>Average Marks:</b> ${average.toFixed(2)}</p>
+        <p><b>Percentage:</b> ${percentage.toFixed(2)}%</p>
+        <p class="grade">Grade: ${grade}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
