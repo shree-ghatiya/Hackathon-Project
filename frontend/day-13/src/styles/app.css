@@ -1,0 +1,21 @@
+/* src/styles/app.css */
+:root { --bg:#0b1019; --card:#111827; --text:#e8ecf3; --muted:#93a4b6; --accent:#3b82f6; }
+
+body { font-family: Inter, Arial, sans-serif; margin:0; background:#f5f7fb; color:#222; }
+.container { max-width:920px; margin:24px auto; padding:0 16px; }
+h1 { margin-bottom:12px; color:#123; }
+.card { background:#fff; padding:12px; border-radius:10px; box-shadow:0 6px 20px rgba(0,0,0,0.06); }
+.form { margin-bottom:16px; }
+.row { display:flex; gap:8px; align-items:center; }
+input, textarea { width:100%; padding:8px; border-radius:8px; border:1px solid #ddd; }
+textarea { resize:vertical; }
+.primary { background:var(--accent); color:white; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; }
+.secondary { background:#eee; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; }
+
+.notes-list { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px; margin-top:12px; }
+
+.note { padding:12px; background:#fff; border-radius:10px; border:1px solid #e6e8eb; }
+.note.pinned { border-left:5px solid #f59e0b; }
+.note-head { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+.note-actions button { margin-left:6px; }
+.error { color:#b00020; margin-bottom:8px; }
